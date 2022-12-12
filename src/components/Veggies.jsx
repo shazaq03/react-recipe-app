@@ -16,17 +16,14 @@ function Veggies() {
 
   const getVeggie = async () =>{
 
-    const check = localStorage.getItem("veggie");
-    if(check){
-      setVeggie(JSON.parse(check));
-    }else{
+   
       const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=vegetarian`);
       const data = response.data;
 
-      localStorage.setItem("veggie", JSON.stringify(data.recipes));
+      
       setVeggie(data.recipes);
 
-    }
+    
   }
 
 
